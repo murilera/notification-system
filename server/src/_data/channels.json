@@ -1,0 +1,14 @@
+[
+  {
+    "_id": "5d7a514b5d2c12c7449be040",
+    "name": "SMS"
+  },
+  {
+    "_id": "5d7a514b5d2c12c7449be041",
+    "name": "Email"
+  },
+  {
+    "_id": "5d7a514b5d2c12c7449be042",
+    "name": "Push"
+  }
+]
