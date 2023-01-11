@@ -21,6 +21,4 @@ const LogsSchema = new mongoose.Schema({
 
 const Logs = mongoose.models.Logs || mongoose.model('Logs', LogsSchema);
 
-module.exports = {
-  Logs
-}
+module.exports = Logs

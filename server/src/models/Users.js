@@ -1,7 +1,4 @@
 const mongoose = require('mongoose');
-const category = require('./Categories')
-const channels = require('./Channels')
-
 
 const UsersSchema = new mongoose.Schema({
   name: {
@@ -17,12 +14,18 @@ const UsersSchema = new mongoose.Schema({
     required: [true, 'phone is required'],
   },
   channels: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Channels"
+    type: [String],
+    required: true,
+    values: ['SMS', 'Email', 'Push'],
+    message: '{VALUE} is not supported at the moment'
   },
   subscribes: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Categories"
+    type: [String],
+    required: true,
+    enum: {
+      values: ['Sports', 'Finance', 'Movies'],
+      message: '{VALUE} is not supported at the moment'
+    }
   },
   createdat: {
     default: Date.now,
@@ -34,6 +37,4 @@ UsersSchema.set('toJSON', { virtuals: true, });
 
 const Users = mongoose.models.Users || mongoose.model('Users', UsersSchema);
 
-module.exports = {
-  Users
-}
+module.exports = Users

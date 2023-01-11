@@ -13,6 +13,4 @@ const ChannelsSchema = new mongoose.Schema({
 
 const Channels = mongoose.models.Channels || mongoose.model('Channels', ChannelsSchema);
 
-module.exports = {
-  Channels
-}
+module.exports = Channels

@@ -14,6 +14,7 @@ const Messages = require('./models/Messages')
 const Users = require('./models/Users')
 
 // connect to db
+mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -41,11 +42,11 @@ const importData = async () => {
   try {
     await Categories.create(categories)
     await Channels.create(channels)
-    await Logs.create(logs)
-    await Messages.create(messages)
+    // await Logs.create(logs)
+    // await Messages.create(messages)
     await Users.create(users)
 
-    console.log('Data imported...'.green.inverse)
+    console.log('Data imported...')
     process.exit()
   } catch (error) {
     console.error(error)
@@ -57,11 +58,11 @@ const deleteData = async () => {
   try {
     await Categories.deleteMany()
     await Channels.deleteMany()
-    await Logs.deleteMany()
-    await Messages.deleteMany()
+    // await Logs.deleteMany()
+    // await Messages.deleteMany()
     await Users.deleteMany()
 
-    console.log('Data destroyed...'.red.inverse)
+    console.log('Data destroyed...')
     process.exit()
   } catch (error) {
     console.error(error)

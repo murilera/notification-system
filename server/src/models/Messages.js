@@ -7,13 +7,15 @@ const MessagesSchema = new mongoose.Schema({
     required: true,
   },
   category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Categories"
+    type: String,
+    required: true,
+    enum: {
+      values: ['Sports', 'Finance', 'Movies'],
+      message: '{VALUE} is not supported at the moment'
+    }
   },
 });
 
 const Messages = mongoose.models.Messages || mongoose.model('Messages', MessagesSchema);
 
-module.exports = {
-  Messages
-}
+module.exports = Messages

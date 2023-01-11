@@ -13,6 +13,4 @@ const CategoriesSchema = new mongoose.Schema({
 
 const Categories = mongoose.models.Categories || mongoose.model('Categories', CategoriesSchema);
 
-module.exports = {
-  Categories
-}
+module.exports = Categories
