@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser')
 const errorHandler = require('./middleware/errorHandler.middleware')
 const connectDB = require('./db/db')
 
+const messages = require('./routes/messages.route')
+const logs = require('./routes/logs.route')
 
 // load envs
 const env = dotenv.config()
@@ -32,6 +34,8 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 app.use(cors())
 
 // mount routers
+app.use('/api/v1/messages', messages)
+app.use('/api/v1/logs', logs)
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000

@@ -6,3 +6,5 @@ const {
 const router = express.Router()
 
 router.get('/', get)
+
+module.exports = router

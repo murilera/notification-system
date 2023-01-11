@@ -7,11 +7,11 @@ const path = require('path')
 dotenv.config()
 
 // load models
-const Categories = require('./models/Categories')
-const Channels = require('./models/Channels')
-const Logs = require('./models/Logs')
-const Messages = require('./models/Messages')
-const Users = require('./models/Users')
+const Categories = require('./db/models/Categories')
+const Channels = require('./db/models/Channels')
+const Logs = require('./db/models/Logs')
+const Messages = require('./db/models/Messages')
+const Users = require('./db/models/Users')
 
 // connect to db
 mongoose.set("strictQuery", false);

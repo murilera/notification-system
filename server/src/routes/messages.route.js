@@ -6,3 +6,5 @@ const {
 const router = express.Router()
 
 router.post('/add', add)
+
+module.exports = router
