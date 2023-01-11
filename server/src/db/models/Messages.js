@@ -14,6 +14,10 @@ const MessagesSchema = new mongoose.Schema({
       message: '{VALUE} is not supported at the moment'
     }
   },
+  createdat: {
+    default: Date.now,
+    type: Date,
+  }
 });
 
 const Messages = mongoose.models.Messages || mongoose.model('Messages', MessagesSchema);
