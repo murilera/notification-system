@@ -29,7 +29,7 @@ class createMessageUseCase {
     const { notification, users } = await notificationAdapter.send()
 
     users.map(async (v) => {
-      const newLog = await LogsRepository.create(
+      await LogsRepository.create(
         v.email,
         notification,
         category

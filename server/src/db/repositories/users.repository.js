@@ -20,12 +20,15 @@ const userRepository = (UsersModel) => {
    */
   const getByChannel = async (channel) => {
     const subscribes = Array.isArray(channel) ? channel : [channel]
-    const result = await UsersModel
-      .find({
-        subscribes,
-      });
+    const result = await UsersModel.find({});
+    const filtered = result.filter((item) => {
+      const category = item.subscribes
+      if (category.includes(subscribes)) {
+        return item
+      }
+    })
 
-    return result;
+    return filtered;
   };
 
   return {

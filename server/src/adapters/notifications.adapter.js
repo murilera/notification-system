@@ -13,6 +13,7 @@ class NotificationAdapter {
       const users = await UsersRepository.getByChannel(this.channel)
       const usersNotificated = users.map(v => v.email)
       return {
+        // I know that it should be only this.message, but it's for visual purposes
         notification: `${this.message} sent to ${this.channel} channel and to ${usersNotificated}`,
         users
       }
