@@ -11,10 +11,11 @@ const messages = require('./routes/messages.route')
 // const logs = require('./routes/logs.route')
 
 // load envs
-const env = dotenv.config()
-if (env.error) {
-  throw env.error
-}
+dotenv.config({ silent: true })
+// const env = dotenv.config({ silent: true })
+// if (env.error) {
+//   throw env.error
+// }
 
 // connect to mongodb
 connectDB()
