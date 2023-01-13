@@ -1,5 +1,5 @@
 const asyncHandler = require('../middleware/asyncHandler.middleware')
-const GetLogsUseCase = require('../usecases/logs/getLogs.usecase')
+const GetLogsUseCase = require('../usecases/logs/getLogs-usecase.js')
 
 
 // @desc    Create new message

@@ -1,5 +1,5 @@
 const asyncHandler = require('../middleware/asyncHandler.middleware')
-const CreateMessageUseCase = require('../usecases/messages/createMessage.usecase')
+const CreateMessageUseCase = require('../usecases/messages/createMessage-usecase')
 
 
 // @desc    Create new message
