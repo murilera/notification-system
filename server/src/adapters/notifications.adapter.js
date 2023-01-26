@@ -1,22 +1,8 @@
-const usersModel = require('../db/models/Users')
-const usersRepository = require('../db/repositories/users.repository')
-const UsersRepository = usersRepository(usersModel)
-
 class NotificationAdapter {
-  constructor (message, channel) {
-    this.message = message
-    this.channel = channel
-  }
-
-  async send () {
+  async send(message, user, channel) {
     try {
-      const users = await UsersRepository.getByChannel(this.channel)
-      const usersNotificated = users.map(v => v.email)
-      return {
-        // I know that it should be only this.message, but it's for visual purposes
-        notification: `${this.message} sent to ${this.channel} channel and to ${usersNotificated}`,
-        users
-      }
+      // I know that it should be only message, but it's for visual purposes
+      return `${message} sent to ${channel} channel and to ${user}`
     } catch (error) {
       console.error(error)
     }
@@ -24,33 +10,26 @@ class NotificationAdapter {
 }
 
 class SmsNotification extends NotificationAdapter {
-  async send () {
-    const users = await UsersRepository.getByChannel('SMS')
-    super.send(this.message, 'SMS')
-    return {
-      notification: "SMS sent"
-    }
+  async send(message, user) {
+    return super.send(message, user, 'SMS')
   }
 }
 
 class EmailNotification extends NotificationAdapter {
-  async send () {
-    const users = await UsersRepository.getByChannel('Email')
-    super.send(this.message, 'Email')
-    return {
-      notification: "Email sent"
-    }
+  async send(message, user) {
+    return super.send(message, user, 'Email')
   }
 }
 
 class PushNotification extends NotificationAdapter {
-  async send () {
-    const users = await UsersRepository.getByChannel('Push')
-    super.send(this.message, 'Push')
-    return {
-      notification: "Push sent"
-    }
+  async send(message, user) {
+    return super.send(message, user, 'Push')
   }
 }
 
-module.exports = NotificationAdapter
+module.exports = {
+  NotificationAdapter,
+  SmsNotification,
+  EmailNotification,
+  PushNotification,
+}

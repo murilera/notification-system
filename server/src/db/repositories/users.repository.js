@@ -14,16 +14,16 @@ const userRepository = (UsersModel) => {
   };
 
   /**
-   * Get a user by channel subscription
-   * @param {String} channel The channel subscription address of the user
+   * Get a user by category subscription
+   * @param {String} category The category subscription address of the user
    * @returns {Object} The document of the user from Mongo
    */
-  const getByChannel = async (channel) => {
-    const subscribes = Array.isArray(channel) ? channel : [channel]
+  const getByCategory = async (category) => {
+    const subscribed = Array.isArray(category) ? category : [category]
     const result = await UsersModel.find({});
     const filtered = result.filter((item) => {
       const category = item.subscribes
-      if (category.includes(subscribes)) {
+      if (category.includes(subscribed)) {
         return item
       }
     })
@@ -33,7 +33,7 @@ const userRepository = (UsersModel) => {
 
   return {
     getByEmail,
-    getByChannel
+    getByCategory
   }
 }
 
