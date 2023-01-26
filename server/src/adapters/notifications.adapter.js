@@ -11,19 +11,19 @@ class NotificationAdapter {
 
 class SmsNotification extends NotificationAdapter {
   async send(message, user) {
-    return super.send(message, user, 'SMS')
+    return `${message} sent to SMS channel and to ${user}`
   }
 }
 
 class EmailNotification extends NotificationAdapter {
   async send(message, user) {
-    return super.send(message, user, 'Email')
+    return `${message} sent to Email channel and to ${user}`
   }
 }
 
 class PushNotification extends NotificationAdapter {
   async send(message, user) {
-    return super.send(message, user, 'Push')
+    return `${message} sent to Push channel and to ${user}`
   }
 }
 

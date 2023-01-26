@@ -2,6 +2,11 @@
 
 project related to [notification system test](notification-test.pdf)
 
+up and running:
+
+- [frontend](https://notification-system-2jw08dxi3-murilera.vercel.app/)
+- [backend](https://notification-system-production.up.railway.app/)
+
 ## installation
 
 ```
